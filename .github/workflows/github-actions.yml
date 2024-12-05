@@ -8,7 +8,7 @@ on:
   pull_request:
     branches: [main]
 
-  # Allows running this workflow from GitHub Actions
+  # Allows running this workflow from GitHub Actions tab
   workflow_dispatch:
 
 jobs:
@@ -23,7 +23,7 @@ jobs:
         with:
           node-version: 23
       - run: npm install
-      # run: npm run test -- Commenting out to avoid breaking the frontend
+      # run: npm run test
       - run: npm run build
 
   backend:
@@ -39,14 +39,14 @@ jobs:
         with:
           python-version: "3.12"
           cache: "pip" # caching pip dependencies
-      # Install the dependencies
+      # Install dependencies
       - run: pip install -r requirements.txt
       # Run tests
       - run: python -m unittest test_app
 
 
 
-  # job for building and pushing Docker images
+  # Define a job for building and pushing Docker images
   docker:
     # Once backend and frontend stages run
     needs: [frontend, backend]
@@ -83,18 +83,18 @@ jobs:
 
 
 
-  # Deployment job -- wasn't able to get this running unfortunately
+  # Define a deployment job -- couldn't get this together unfortunately
   deploy:
     needs: docker
     runs-on: ubuntu-latest
-    # steps:
-    #   #- name:
-    #   #   if: 
-    #   #   env:
-    #   #     deploy_url: 
-    #   #   run: curl "$deploy_url"
-    #   # - name: 
-    #   #   if: 
-    #   #   env:
-    #   #     deploy_url: 
-    #   #   run: curl 
+    steps:
+      - name: #
+        if: 
+        env:
+          deploy_url: 
+        run: 
+      - name: 
+        if: 
+        env:
+          deploy_url: 
+        run: 
