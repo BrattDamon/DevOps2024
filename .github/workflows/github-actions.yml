@@ -16,10 +16,13 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ${{ github.workspace }}/frontend  # Use absolute path here
+        working-directory: ${{ github.workspace }}/frontend
     steps:
       - uses: actions/checkout@v4
-      - run: ls -la ${{ github.workspace }}/frontend  # Check if frontend directory exists
+      - name: List contents of the repository
+        run: ls -la ${{ github.workspace }}
+      - name: List contents of frontend directory
+        run: ls -la ${{ github.workspace }}/frontend  # Check if frontend directory exists
       - uses: actions/setup-node@v4
         with:
           node-version: 23
@@ -31,17 +34,20 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ${{ github.workspace }}/backend  # Use absolute path here
+        working-directory: ${{ github.workspace }}/backend
     steps:
       - uses: actions/checkout@v4
-      - run: ls -la ${{ github.workspace }}/backend  # Check if backend directory exists
+      - name: List contents of the repository
+        run: ls -la ${{ github.workspace }}
+      - name: List contents of backend directory
+        run: ls -la ${{ github.workspace }}/backend  # Check if backend directory exists
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
           cache: "pip"
       - run: pip install -r requirements.txt
       - run: python -m unittest -v test_app.py
-    
+
 
 
   # Define a job for building and pushing Docker images
