@@ -19,8 +19,6 @@ jobs:
         working-directory: ${{ github.workspace }}/Project/frontend
     steps:
       - uses: actions/checkout@v4
-      - name: List contents of frontend directory
-        run: ls -la ${{ github.workspace }}/Project/frontend  # Check if frontend directory exists
       - uses: actions/setup-node@v4
         with:
           node-version: 23
@@ -35,10 +33,6 @@ jobs:
         working-directory: ${{ github.workspace }}/Project/backend
     steps:
       - uses: actions/checkout@v4
-      - name: List contents of the repository
-        run: ls -la ${{ github.workspace }}
-      - name: List contents of backend directory
-        run: ls -la ${{ github.workspace }}/Project/backend  # Check if backend directory exists
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
