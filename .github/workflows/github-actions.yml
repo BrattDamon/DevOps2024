@@ -80,21 +80,3 @@ jobs:
           context: ./Project/backend
           tags: ghcr.io/brattdamon/cycalc-backend:${{ github.sha }},ghcr.io/brattdamon/cycalc-backend:latest
           push: true
-
-
-
-  # Define a deployment job -- couldn't get this together unfortunately
-  deploy:
-    needs: docker
-    runs-on: ubuntu-latest
-    steps:
-      - name: #
-        if: 
-        env:
-          deploy_url: 
-        run: 
-      - name: 
-        if: 
-        env:
-          deploy_url: 
-        run: 
