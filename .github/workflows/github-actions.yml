@@ -16,11 +16,9 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ${{ github.workspace }}/frontend
+        working-directory: ${{ github.workspace }}/Project/frontend
     steps:
       - uses: actions/checkout@v4
-      - name: List contents of the repository
-        run: ls -la ${{ github.workspace }}
       - name: List contents of frontend directory
         run: ls -la ${{ github.workspace }}/Project/frontend  # Check if frontend directory exists
       - uses: actions/setup-node@v4
@@ -34,7 +32,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ${{ github.workspace }}/backend
+        working-directory: ${{ github.workspace }}/Project/backend
     steps:
       - uses: actions/checkout@v4
       - name: List contents of the repository
