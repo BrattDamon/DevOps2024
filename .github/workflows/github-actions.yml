@@ -22,7 +22,7 @@ jobs:
       - name: List contents of the repository
         run: ls -la ${{ github.workspace }}
       - name: List contents of frontend directory
-        run: ls -la ${{ github.workspace }}/frontend  # Check if frontend directory exists
+        run: ls -la ${{ github.workspace }}/Project/frontend  # Check if frontend directory exists
       - uses: actions/setup-node@v4
         with:
           node-version: 23
@@ -40,7 +40,7 @@ jobs:
       - name: List contents of the repository
         run: ls -la ${{ github.workspace }}
       - name: List contents of backend directory
-        run: ls -la ${{ github.workspace }}/backend  # Check if backend directory exists
+        run: ls -la ${{ github.workspace }}/Project/backend  # Check if backend directory exists
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
