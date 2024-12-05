@@ -30,15 +30,19 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ${{ github.workspace }}/Project/backend
+        working-directory: ${{ github.workspace }}/Project/backend  # Set working directory to backend
     steps:
+      # Checkout code
       - uses: actions/checkout@v4
+      # Setup Python
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-          cache: "pip"
+          cache: "pip" # caching pip dependencies
+      # Install dependencies
       - run: pip install -r requirements.txt
-      - run: python -m unittest backend.test_app
+      # Run tests
+      - run: python -m unittest test_app
 
 
 
