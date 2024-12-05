@@ -1,57 +1,46 @@
 # Define the Workflow Name
-name: Calculator App CI/CD Pipeline
+name: Dev Ops App CI/CD Pipeline
 
 # Define triggers for the workflow
 on:
   push:
     branches: [main]
-    paths: ["**/*.py", "**/*.js"]
   pull_request:
     branches: [main]
-    paths: ["**/*.py", "**/*.js"]
 
   # Allows running this workflow from GitHub Actions tab
   workflow_dispatch:
 
 jobs:
-  # Define a job for building and testing the frontend
   frontend:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./frontend
+        working-directory: ./frontend  # Ensure this path is correct
     steps:
-      # Checkout code
       - uses: actions/checkout@v4
-      # Setup Node.js
       - uses: actions/setup-node@v4
         with:
           node-version: 23
-      # Install dependencies
       - run: npm install
-      # TODO: Run tests
       - run: npm run test
-      # Build the React app
       - run: npm run build
 
-  # Define a job for building and testing the backend
   backend:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./backend
+        working-directory: ./backend  # Ensure this path is correct
     steps:
-      # Checkout code
       - uses: actions/checkout@v4
-      # Setup Python
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-          cache: "pip" # caching pip dependencies
-      # Install dependencies
+          cache: "pip"
       - run: pip install -r requirements.txt
-      # Run tests
       - run: python -m unittest -v test_app.py
+    
+
 
   # Define a job for building and pushing Docker images
   docker:
