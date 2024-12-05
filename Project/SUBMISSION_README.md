@@ -124,7 +124,8 @@
 
 **Use this section to reflect on your experience and learnings when implementing this project.**
 
-<!-- Include explanation here -->
+**I experienced a lot of issues setting up my Docker Image, specifically with my frontend portion. There was a lot of trial and error with getting the correct NPM to install.**
+**I ended up spending the most time on this, as it was incredibly hard to troubleshoot with documentation online**
 <!-- Include explanation here -->
 <!-- Include explanation here -->
 <!-- Include explanation here -->

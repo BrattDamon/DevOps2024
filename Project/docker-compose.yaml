@@ -1,47 +1,54 @@
-# This is just a template placeholder docker-compose file. Use relevant sections which are applicable, 
-# and feel free to customize.
 version: '3'
 
 services:
   frontend:
     # Specify the build context for the frontend
     build:
+      context: ./frontend
+      dockerfile: Dockerfile
+
     # Map the host port to the container port
     ports:
+      - "3000:3000"
+
     # Specify dependencies (if applicable)
     depends_on:
+      - backend
 
-    # Additional options (uncomment and configure as needed):
-    
     # Specify environment variables if needed
-    # environment:
-    
+    env_file:
+      - environment.env
+
     # Specify volume for live code reloading (optional)
-    # volumes:
-    
+    volumes:
+      - ./frontend:/app
+
     # Specify the command to run the development server (if different from Dockerfile)
-    # command:
+    command: ["npm", "start"]
 
   backend:
     # Specify the build context for the backend
     build:
+      context: ./backend
+      dockerfile: Dockerfile
+
     # Map the host port to the container port
     ports:
-    
-    # Additional options (uncomment and configure as needed):
-    
+      - "5000:5000"
+
     # Specify environment variables if needed
-    # environment:
-    
+    environment:
+      FLASK_ENV: development
+      FLASK_APP: app.py
+
     # Specify volume for live code reloading (optional)
-    # volumes:
-    
+    volumes:
+      - ./backend:/app
+
     # Specify the command to run the development server (if different from Dockerfile)
-    # command:
+    command: ["flask", "run", "--host=0.0.0.0"]
 
-# Additional components (uncomment and configure as needed):
 # Define a custom network (if applicable)
-# networks:
-
-# Define volumes (if applicable)
-# volumes:
+networks:
+  default:
+    driver: bridge
