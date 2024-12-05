@@ -8,7 +8,7 @@ on:
   pull_request:
     branches: [main]
 
-  # Allows running this workflow from GitHub Actions tab
+  # Allows running this workflow from GitHub Actions
   workflow_dispatch:
 
 jobs:
@@ -46,7 +46,7 @@ jobs:
 
 
 
-  # Define a job for building and pushing Docker images
+  # job for building and pushing Docker images
   docker:
     # Once backend and frontend stages run
     needs: [frontend, backend]
@@ -80,3 +80,5 @@ jobs:
           context: ./Project/backend
           tags: ghcr.io/brattdamon/cycalc-backend:${{ github.sha }},ghcr.io/brattdamon/cycalc-backend:latest
           push: true
+
+          ## was unable to get deploy section finished unfortunately
